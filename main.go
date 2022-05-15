@@ -17,6 +17,7 @@ import (
 
 func main() {
 	repo := chooseRepo()
+	fmt.Println("REDIS", os.Getenv("URL_DB"))
 	service := shortener.NewRedirectService(repo)
 	handler := h.NewHandler(service)
 
@@ -31,7 +32,7 @@ func main() {
 
 	errs := make(chan error, 2)
 	go func() {
-		fmt.Println("Listening on port :8000")
+		fmt.Println("Listening on port :5000")
 		errs <- http.ListenAndServe(httpPort(), r)
 	}()
 
@@ -44,7 +45,7 @@ func main() {
 }
 
 func httpPort() string {
-	port := "8000"
+	port := "5000"
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
 	}

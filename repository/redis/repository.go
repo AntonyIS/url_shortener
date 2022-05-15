@@ -72,7 +72,7 @@ func (r redisRepository) Store(redirect *shortener.Redirect) error {
 	}
 	_, err := r.client.HMSet(key, data).Result()
 	if err != nil {
-		return errors.Wrap(err, "respostory.Redirect.Find")
+		return errors.Wrap(err, "respostory.Redirect.Store")
 	}
 	return nil
 }

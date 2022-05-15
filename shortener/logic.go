@@ -34,5 +34,6 @@ func (r redirectService) Store(redirect *Redirect) error {
 	}
 	redirect.Code = shortid.MustGenerate()
 	redirect.CreatedAT = time.Now().UTC().Unix()
+
 	return r.redirectRepository.Store(redirect)
 }
