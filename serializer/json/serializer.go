@@ -18,7 +18,7 @@ func (*Redirect) Decode(input []byte) (*shortener.Redirect, error) {
 	return redirect, nil
 }
 
-func (*Redirect) Encode(input string) ([]byte, error) {
+func (*Redirect) Encode(input *shortener.Redirect) ([]byte, error) {
 	rawMsg, err := json.Marshal(input)
 	if err != nil {
 		return nil, errors.Wrap(err, "serlializer.Redirect.Decode")
